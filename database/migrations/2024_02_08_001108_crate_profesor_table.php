@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('division_id');
 
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('puesto_id')->references('id')->on('puesto')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('puesto_id')->references('id')->on('puestos')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('division_id')->references('id')->on('division')->onDelete('cascade')->onUpdate('cascade');
         });
     }
