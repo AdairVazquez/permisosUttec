@@ -22,9 +22,9 @@ return new class extends Migration
             $table->unsignedBigInteger('puesto_id');
             $table->unsignedBigInteger('division_id');
 
-            $table->foreign('usuario_id')->references('id')->on('users');
-            $table->foreign('puesto_id')->references('id')->on('puesto');
-            $table->foreign('division_id')->references('id')->on('division');
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('puesto_id')->references('id')->on('puesto')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('division_id')->references('id')->on('division')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

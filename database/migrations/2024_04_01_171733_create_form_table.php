@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inicio_ses', function (Blueprint $table) {
+        Schema::create('form', function (Blueprint $table) {
             $table->id();
-            $table->timestamps(); 
-            $table->date('fecha');
-            $table->string('user_id');
-            $table->string('ip_address');
-            $table->foreign('user_id')->references('id')->on('user')->onUpdate('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('form');
     }
 };

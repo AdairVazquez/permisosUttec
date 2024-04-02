@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('observaciones')->nullable();
             $table->unsignedBigInteger('id_profesor');
 
-            $table->foreign('id_profesor')->references('id')->on('profesor');
+            $table->foreign('id_profesor')->references('id')->on('profesor')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

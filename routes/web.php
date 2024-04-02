@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\FormController;
@@ -39,36 +40,39 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //RUTAS DE DIVISION
-Route::get('/division/nueva',[DivisionController::class,'view'])->name('division.nueva')->middleware('auth');
-Route::delete('division/eliminar/{id}',[DivisionController::class,'delete'])->name('division.eliminar')->middleware('auth');
-Route::post('/division/guardar',[DivisionController::class,'store'])->name('division.guardar')->middleware('auth');
-Route::get('/divisiones',[DivisionController::class,'index'])->name('divisiones')->middleware('auth','role');
- 
+Route::get('/division/nueva',[DivisionController::class,'view'])->name('division.nueva')->middleware('auth','role');
+Route::delete('division/eliminar/{id}',[DivisionController::class,'delete'])->name('division.eliminar')->middleware('auth','role');
+Route::post('/division/guardar',[DivisionController::class,'store'])->name('division.guardar')->middleware('auth','role');
+Route::get('/divisiones',[DivisionController::class,'index'])->name('divisiones')->middleware('auth','role','role');
+  
 //RUTAS DE PUESTO
-Route::get('/puesto/nueva',[PuestoController::class,'view'])->name('puesto.nueva')->middleware('auth');
-Route::delete('puesto/eliminar/{id}',[PuestoController::class,'delete'])->name('puesto.eliminar')->middleware('auth');
-Route::post('/puesto/guardar',[PuestoController::class,'store'])->name('puesto.guardar')->middleware('auth');
-Route::get('/puestos',[PuestoController::class,'index'])->name('puestos')->middleware('auth','role');
+Route::get('/puesto/nueva',[PuestoController::class,'view'])->name('puesto.nueva')->middleware('auth','role');
+Route::delete('puesto/eliminar/{id}',[PuestoController::class,'delete'])->name('puesto.eliminar')->middleware('auth','role');
+Route::post('/puesto/guardar',[PuestoController::class,'store'])->name('puesto.guardar')->middleware('auth','role');
+Route::get('/puestos',[PuestoController::class,'index'])->name('puestos')->middleware('auth','role','role');
 
 //RUTAS DE PROFESORES
-Route::get('/profesor/nueva',[ProfesorController::class,'view'])->name('profesor.nueva')->middleware('auth');
-Route::post('/profesor/actualizar',[ProfesorController::class,'actualiza'])->name('profesor.actualizar')->middleware('auth');
-Route::delete('profesor/eliminar/{id}',[ProfesorController::class,'delete'])->name('profesor.eliminar')->middleware('auth');
-Route::post('/profesor/guardar',[ProfesorController::class,'store'])->name('profesor.guardar')->middleware('auth');
-Route::get('/profesores',[ProfesorController::class,'index'])->name('profesores')->middleware('auth','role');
+Route::get('/profesor/nueva',[ProfesorController::class,'view'])->name('profesor.nueva')->middleware('auth','roleP');
+Route::post('/profesor/actualizar',[ProfesorController::class,'actualiza'])->name('profesor.actualizar')->middleware('auth','roleP');
+Route::delete('profesor/eliminar/{id}',[ProfesorController::class,'delete'])->name('profesor.eliminar')->middleware('auth','roleP');
+Route::post('/profesor/guardar',[ProfesorController::class,'store'])->name('profesor.guardar')->middleware('auth','roleP');
+Route::get('/profesores',[ProfesorController::class,'index'])->name('profesores')->middleware('auth','roleP');
 
 
 //RUTAS DE PERMISOS
-Route::get('/permiso/rechazar',[PermisoController::class,'RegresaPer'])->name('reg.permiso')->middleware('auth');
-Route::post('permiso/autorizar',[PermisoController::class,'autorizar'])->name('permiso.autorizar')->middleware('auth');
-Route::post('/permiso/rechazado',[PermisoController::class,'Rechazar'])->name('rechazar.permiso')->middleware('auth');
-Route::get('permisos',[PermisoController::class, 'listP'])->name('permisos');
+Route::get('/permiso/rechazar',[PermisoController::class,'RegresaPer'])->name('reg.permiso')->middleware('auth','role');
+Route::post('permiso/autorizar',[PermisoController::class,'autorizar'])->name('permiso.autorizar')->middleware('auth','role');
+Route::post('/permiso/rechazado',[PermisoController::class,'Rechazar'])->name('rechazar.permiso')->middleware('auth','role');
+Route::get('permisos',[PermisoController::class, 'listP'])->name('permisos','role');
 
 //RUTAS DE LOGS
 Route::get('/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('auth','role')->name('errores'); 
 Route::get('/logsin',[FormController::class,'logins'])->name('logins')->middleware('auth','role');
 Route::get('/logsmv',[FormController::class,'movimientos'])->name('logMovimientos')->middleware('auth','role');
 
+//ADMINS
+Route::get('/admins',[AdministradorController::class,'index'])->name('admins')->middleware('auth','role');
+Route::get('/admins/nueva',[AdministradorController::class,'asignar'])->name('admin.nueva')->middleware('auth','role');
 //LOGIN GOOGLE
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();

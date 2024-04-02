@@ -51,6 +51,10 @@ class ProfesorController extends Controller
             $profesor -> usuario_id = $req -> usuario;
             $profesor -> puesto_id = $req -> puesto;
             $profesor -> division_id =$req -> division;
+            $nomPuesto = Puesto::where('id','=',$req->puesto)->value('nombre');
+            $usuario = User::find($req->usuario);
+            $usuario -> rol = $nomPuesto;
+            $usuario -> save();
             $profesor->save();
             $ip_address = $req->ip();
             $user = Auth::user();
