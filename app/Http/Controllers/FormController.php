@@ -101,7 +101,7 @@ class FormController extends Controller
             'ip_address' => $ip_address,
         ]);
     }
-    return redirect()->route('home');
+    //return redirect()->route('home');
   }
 
 
