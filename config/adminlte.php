@@ -345,8 +345,13 @@ return [
         ],
         [
             'text'    => 'Logs',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-fw fa-info',
             'url' => '/logs',
+        ],
+        [
+            'text'    => 'Asignar Admin',
+            'icon'    => 'fas fa-fw fa-share',
+            'url' => '/admins',
         ],
     ],
 
