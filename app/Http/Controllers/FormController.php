@@ -80,7 +80,7 @@ class FormController extends Controller
         LoginSucc::create([
             'user_id' => $id_us,
             'fecha' => now(),
-            'ip_adderss' => $ip_address,
+            'ip_address' => $ip_address,
             'tipo'=> 'Login Google',
         ]);
         /*

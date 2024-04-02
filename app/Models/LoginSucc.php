@@ -12,7 +12,7 @@ class LoginSucc extends Model
     protected $fillable = [
         'user_id',
         'fecha',
-        'ip_adderss',
+        'ip_address',
         'tipo',
     ];
 }
