@@ -77,14 +77,14 @@ class FormController extends Controller
         $ip_address = $req->ip();
         $user = User::where('id_google', $id)->first();
         echo 'ok';
-        /*
+        
         LoginSucc::create([
             'user_id' => $id_us,
             'fecha' => now(),
             'ip_adderss' => $ip_address,
             'tipo'=> 'Login Google',
         ]);
-
+        /*
         Auth::login($user);*/
         
     }else{
