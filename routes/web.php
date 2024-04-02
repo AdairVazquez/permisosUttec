@@ -73,6 +73,8 @@ Route::get('/logsmv',[FormController::class,'movimientos'])->name('logMovimiento
 //ADMINS
 Route::get('/admins',[AdministradorController::class,'index'])->name('admins')->middleware('auth','role');
 Route::get('/admins/nueva',[AdministradorController::class,'asignar'])->name('admin.nueva')->middleware('auth','role');
+
+
 //LOGIN GOOGLE
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();

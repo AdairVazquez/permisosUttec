@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('users',function(Blueprint $table){
             $table->string('rol')->nullable();
+            $table->string('imagen')->default('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
+            $table->integer('id_google')->nullable();
         });
     }
 
@@ -23,6 +25,8 @@ return new class extends Migration
     {
         Schema::table('users',function(Blueprint $table){
             $table->dropColumn('rol');
+            $table->dropColumn('imagen');
+            $table->dropColumn('id_google');
         });
     }
 };
