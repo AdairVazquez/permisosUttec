@@ -76,15 +76,14 @@ class FormController extends Controller
         $id_us = User::where('email',$email)->value('id');
         $ip_address = $req->ip();
         $user = User::where('id_google', $id)->first();
-        echo $id_us;
         LoginSucc::create([
             'user_id' => $id_us,
             'fecha' => now(),
             'ip_address' => $ip_address,
             'tipo'=> 'Login Google',
         ]);
-        /*
-        Auth::login($user);*/
+        
+        Auth::login($user);
         
     }else{
         $usuario = new User();
@@ -99,11 +98,20 @@ class FormController extends Controller
         Modificaciones::create([
             'id_usuario' => $id_us,
             'movimiento' => 'Creacion del usuario '.$nombre,' por medio de google',
-            'tipo' => 'Creaion',
+            'tipo' => 'Creación',
             'ip_address' => $ip_address,
         ]);
+
+        $user = User::where('id_google', $id)->first();
+        LoginSucc::create([
+            'user_id' => $id_us,
+            'fecha' => now(),
+            'ip_address' => $ip_address,
+            'tipo'=> 'Login Google',
+        ]);
+        Auth::login($user);
     }
-    //return redirect()->route('home');
+    return redirect()->route('home');
   }
 
 
