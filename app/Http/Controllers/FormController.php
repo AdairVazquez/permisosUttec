@@ -76,21 +76,16 @@ class FormController extends Controller
         $id_us = User::where('email',$email)->value('id');
         $ip_address = $req->ip();
         $user = User::where('id_google', $id)->first();
-        try {
-            LoginSucc::create([
-                'user_id' => $id_us,
-                'fecha' => now(),
-                'ip_adderss' => $ip_address,
-                'tipo'=> 'Login Google',
-            ]);
-        } catch (\Throwable $th) {
-            throw $th;
-        }
-        try {
-            Auth::login($user);
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        echo 'ok';
+        /*
+        LoginSucc::create([
+            'user_id' => $id_us,
+            'fecha' => now(),
+            'ip_adderss' => $ip_address,
+            'tipo'=> 'Login Google',
+        ]);
+
+        Auth::login($user);*/
         
     }else{
         $usuario = new User();
