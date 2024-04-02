@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>BIENVENID@ <b> {{$user->name}} </b> {{$user->age}}</h1>
+    <h1>BIENVENID@ <b> {{$user->name}} </b> a</h1>
 @stop
 
 @section('content')
