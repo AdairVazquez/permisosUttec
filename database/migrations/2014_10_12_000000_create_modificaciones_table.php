@@ -9,16 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void 
+    public function up(): void
     {
-        Schema::create('inicio_ses', function (Blueprint $table) {
+        Schema::create('modificaciones', function (Blueprint $table) {
             $table->id();
             $table->timestamps(); 
-            $table->date('fecha');
-            $table->integer('user_id');
-            $table->string('ip_address');
+            $table->integer('id_usuario');
+            $table->string('movimiento');
             $table->string('tipo');
-            $table->foreign('user_id')->references('id')->on('userss')->onDelete('cascade')->onUpdate('cascade');;
+            $table->string('ip_address');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('modificaciones');
     }
 };

@@ -49,23 +49,7 @@ class FormController extends Controller
         return "Usuario: ". $req->txtUsuario . " Contraseña: ". $req->txtContraseña;
 
   }
-
-
-  public function functLogout(Request $req)
-  { 
-    $usuario = User::where('id','=',$req->id)->select('users.*')->get();
-    print_r($_POST);
-    $id_user = $req->id;
-            $ip_address = $req->ip();
-            LoginSucc::create([
-                'user_id' => $id_user,
-                'fecha' => now(),
-                'ip_address' => $ip_address,
-                'tipo' => 'Logout',
-            ]);
-            return response()->json(['mensaje' => 'Función llamada exitosamente']);
-  }
-
+  
   public function logins(Request $req)
   {
     $logins = Logins::join('users','inicio_ses.user_id','=','users.id')->select('inicio_ses.*','users.email as emailUs')->get();
@@ -82,23 +66,25 @@ class FormController extends Controller
 
   public function google_log(Request $req){
     $user_google = Socialite::driver('google')->stateless()->user();
+    //dd($user_google);
     $id = $user_google->id;
     $nombre = $user_google->name;
     $email = $user_google->email;
     $img = $user_google->avatar;
-    $us = User::where('id_google','=',$id)->first();
+    $us = User::where('id_google',$id)->exists();
     if($us){
         $id_us = User::where('email',$email)->value('id');
-        $tipo = 'Google';
         $ip_address = $req->ip();
-        $user = User::where('email', $email)->first();
+        $user = User::where('id_google', $id)->first();
         LoginSucc::create([
             'user_id' => $id_us,
             'fecha' => now(),
-            'ip_adderss' => $ip_address,
+            'ip_address' => $ip_address,
             'tipo'=> 'Login Google',
         ]);
+        
         Auth::login($user);
+        
     }else{
         $usuario = new User();
         $usuario -> id_google = $id;
@@ -112,11 +98,20 @@ class FormController extends Controller
         Modificaciones::create([
             'id_usuario' => $id_us,
             'movimiento' => 'Creacion del usuario '.$nombre,' por medio de google',
-            'tipo' => 'Creaion',
+            'tipo' => 'Creación',
             'ip_address' => $ip_address,
         ]);
+
+        $user = User::where('id_google', $id)->first();
+        LoginSucc::create([
+            'user_id' => $id_us,
+            'fecha' => now(),
+            'ip_address' => $ip_address,
+            'tipo'=> 'Login Google',
+        ]);
+        Auth::login($user);
     }
-    return redirect()->to('/home');
+    return redirect()->route('home');
   }
 
 
