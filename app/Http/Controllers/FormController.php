@@ -66,7 +66,7 @@ class FormController extends Controller
 
   public function google_log(Request $req){
     $user_google = Socialite::driver('google')->stateless()->user();
-    dd($user_google);
+    //dd($user_google);
     $id = $user_google->id;
     $nombre = $user_google->name;
     $email = $user_google->email;
@@ -101,7 +101,7 @@ class FormController extends Controller
             'ip_address' => $ip_address,
         ]);
     }
-    //return redirect()->to('/home');
+    return redirect()->route('home');
   }
 
 
