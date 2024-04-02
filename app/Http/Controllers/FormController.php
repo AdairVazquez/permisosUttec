@@ -71,7 +71,7 @@ class FormController extends Controller
     $nombre = $user_google->name;
     $email = $user_google->email;
     $img = $user_google->avatar;
-    $us = User::where('id_google','=',$id)->first();
+    $us = User::where('id_google',$id)->exists();
     if($us){
         $id_us = User::where('email',$email)->value('id');
         $tipo = 'Google';
