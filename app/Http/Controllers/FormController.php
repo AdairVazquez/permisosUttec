@@ -86,8 +86,12 @@ class FormController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+        try {
+            Auth::login($user);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
         
-        Auth::login($user);
     }else{
         $usuario = new User();
         $usuario -> id_google = $id;
