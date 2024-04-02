@@ -9,7 +9,7 @@ class AdministradorController extends Controller
 {
     public function index(){
         $usuarios = User::all();
-        return view('admins',compact('usuarios'));
+        return view('asignarAdmins',compact('usuarios'));
     }
 
     public function asignar(Request $req){
