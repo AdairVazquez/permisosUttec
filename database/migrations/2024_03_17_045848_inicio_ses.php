@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->string('user_id');
             $table->string('ip_address');
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 
