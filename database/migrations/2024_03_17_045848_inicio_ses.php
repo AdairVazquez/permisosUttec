@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('ip_address');
             $table->string('tipo');
-            $table->foreign('user_id')->references('id')->on('userss')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 
