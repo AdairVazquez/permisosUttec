@@ -17,7 +17,7 @@ class CheckProfe
     public function handle(Request $request, Closure $next): Response
     {
         $rol = Auth::user()->rol;
-        if($rol=="Directivo" || $rol=="Admin"){
+        if($rol==="Directivo" || $rol==="Admin"){
             return $next($request);
         }else{ 
             abort(403,'No tienes permitido ingresar a esta paina por que no tienes los roles necesarios ajajaja estas bien menso, deberias tener los roles ve y dile al admin que te los ponga para que puedas seguir navengando amigo :D');
