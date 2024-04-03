@@ -26,7 +26,7 @@
                 <td>{{$profesor['numero']}}</td>
                 <td>{{$profesor['nombre']}}</td>
                 <td>{{$profesor['horas_asignadas']}}</td>
-                <td>{{$profesor['dias_economicos']}}</td>
+                <td>{{$profesor['dia_econom_c']}}</td>
                 <td>{{$profesor['usuario_id']}}</td>
                 <td>{{$profesor->nombre_puesto}}</td>
                 <td>{{$profesor->division->nombre}}</td>
