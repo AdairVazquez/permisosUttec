@@ -27,7 +27,7 @@ class FormController extends Controller
             LoginSucc::create([
                 'user_id' => $id_user,
                 'fecha' => now(),
-                'ip_address' => $ip_address,
+                'ip_address' => 'null',
                 'tipo'=> 'Login',
             ]);
 
