@@ -9,7 +9,7 @@
 @section('content')
 <form action="@if(empty($profesor->id)){{route('profesor.guardar')}}@else{{route('profesor.actualizar')}}@endif" method="post">
     @csrf
-    <input type="text" name="id" value="{{$profesor->id}}">
+    <input type="hidden" name="id" value="{{$profesor->id}}">
     <div class="mb-3">
     <label for="" class="form-label">Numero de teléfono</label>
     <input type="text" class="form-control boxes" value="{{$profesor->numero}}" name="txtNumero" id="" maxlength="10" pattern="[0-9]+" title="Por favor, solo ingresa números" required>
