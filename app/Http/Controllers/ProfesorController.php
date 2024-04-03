@@ -47,7 +47,7 @@ class ProfesorController extends Controller
             $profesor -> numero = $numStr;
             $profesor -> nombre = $req->txtNombre;
             $profesor -> horas_asignadas = $req -> txtHrs;
-            $profesor -> dias_economicos = $req -> txtDias;
+            $profesor -> dia_econom_c = $req -> txtDias;
             $profesor -> usuario_id = $req -> usuario;
             $profesor -> puesto_id = $req -> puesto;
             $profesor -> division_id =$req -> division;
@@ -74,7 +74,7 @@ class ProfesorController extends Controller
         $profesor -> numero = $numStr;
         $profesor -> nombre = $req -> txtNombre;
         $profesor -> horas_asignadas = $req -> txtHrs;
-        $profesor -> dias_economicos = $req -> txtDias;
+        $profesor -> dia_econom_c = $req -> txtDias;
         $profesor -> usuario_id = $req -> usuario;
         $profesor -> puesto_id = $req -> puesto;
         $profesor -> division_id =$req -> division;

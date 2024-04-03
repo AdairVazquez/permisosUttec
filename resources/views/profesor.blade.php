@@ -24,7 +24,7 @@
     </div>
     <div class="mb-3">
     <label for="" class="form-label">Dias economicos correspondientes</label>
-    <input type="number" class="form-control boxes" name="txtDias" value="{{$profesor->dias_economicos}}" maxlength="2" required id="">
+    <input type="number" class="form-control boxes" name="txtDias" value="{{$profesor->dia_econom_c}}" maxlength="2" required id="">
     </div>
     <div class="mb-3">
         <label class="form-label"  for="" >Usuario</label><br>
