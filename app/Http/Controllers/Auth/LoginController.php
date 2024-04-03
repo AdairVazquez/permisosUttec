@@ -30,9 +30,9 @@ class LoginController extends Controller
         $ip_address = $request->ip();
 
         if(empty($ip_address)){
-            $ip_address = $request->ip();
-        }else{
             $ip_address = 'null';
+        }else{
+            $ip_address = $request->ip();
         }
 
         LoginSucc::create([
