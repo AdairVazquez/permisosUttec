@@ -38,7 +38,7 @@ class LoginController extends Controller
         LoginSucc::create([
             'user_id' => $user->id,
             'fecha' => now(),
-            'ip_adderss' => $ip_address,
+            'ip_address' => $ip_address,
             'tipo' => 'Exitosoa',
         ]);
 
