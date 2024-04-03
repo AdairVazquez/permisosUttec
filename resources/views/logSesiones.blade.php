@@ -199,7 +199,7 @@ body[data-theme="dark"] {
                 <td>{{$log['fecha']}}</td>
                 <td>{{$log['emailUs']}}</td>
                 <td>{{$log['user_id']}}</td>
-                <td>{{$log['ip_adderss']}}</td>
+                <td>{{$log['ip_address']}}</td>
         @endforeach
 
           </tbody>
