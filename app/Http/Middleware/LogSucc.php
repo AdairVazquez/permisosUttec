@@ -22,10 +22,8 @@ class LogSucc
         if (Auth::check()) {
             $user = Auth::user();
             // Registra el inicio de sesión
-            $ip = $request->ip();
-            if(empty($ip)){
-                $ip = 'null';
-            }
+            $ip = 'null';
+           
             LoginSucc::create([
                 'user_id' => $user->id,
                 'fecha' => now(),
