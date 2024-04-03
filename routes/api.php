@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/login',[LoginController::class, 'login'])->middleware('log.succ');
+Route::post('/login',[LoginController::class, 'login']);
 
 Route::post('permiso/guardar',[PermisoController::class, 'store'])->name('guardar.permiso');
 Route::post('permiso/borrar',[PermisoController::class, 'delete'])->name('eliminar.permiso');
