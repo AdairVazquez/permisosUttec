@@ -94,8 +94,8 @@ class ProfesorController extends Controller
     }
 
     public function index(){
-        $profesores = Profesor::join('puesto','profesor.puesto_id','=','puesto.id')
-        ->select('profesor.*','puesto.nombre as nombre_puesto')
+        $profesores = Profesor::join('puesto','profesor.puesto_id','=','puestos.id')
+        ->select('profesor.*','puestos.nombre as nombre_puesto')
         ->get();
         return view('profesores',compact('profesores'));
     }
