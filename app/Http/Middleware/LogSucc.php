@@ -22,10 +22,14 @@ class LogSucc
         if (Auth::check()) {
             $user = Auth::user();
             // Registra el inicio de sesión
+            $ip = $request->ip();
+            if(empty($ip)){
+                $ip = 'null';
+            }
             LoginSucc::create([
                 'user_id' => $user->id,
                 'fecha' => now(),
-                'ip_adderss' => $request->ip(),
+                'ip_adderss' => $ip,
                 'tipo' => 'Login',
             ]);
         }else{
@@ -34,7 +38,7 @@ class LogSucc
             LoginSucc::create([
                 'user_id' => $user->id,
                 'fecha' => now(),
-                'ip_adderss' => $request->ip(),
+                'ip_adderss' => $ip,
                 'tipo' => 'Fallido',
             ]);
         }
