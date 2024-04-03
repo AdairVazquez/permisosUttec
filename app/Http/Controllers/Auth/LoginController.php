@@ -26,7 +26,15 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         // Obtiene la dirección IP del usuario
+        
         $ip_address = $request->ip();
+
+        if(empty($ip_address)){
+            $ip_address = $request->ip();
+        }else{
+            $ip_address = 'null';
+        }
+
         LoginSucc::create([
             'user_id' => $user->id,
             'fecha' => now(),
