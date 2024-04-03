@@ -39,7 +39,7 @@ class LoginController extends Controller
             'user_id' => $user->id,
             'fecha' => now(),
             'ip_adderss' => $ip_address,
-            'tipo' => 'Exitoso',
+            'tipo' => 'Exitosoa',
         ]);
 
     }
