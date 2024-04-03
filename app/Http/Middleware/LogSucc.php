@@ -22,7 +22,7 @@ class LogSucc
         if (Auth::check()) {
             $user = Auth::user();
             // Registra el inicio de sesión
-            $ip = 'null';
+            $ip = 'asd';
            
             LoginSucc::create([
                 'user_id' => $user->id,
