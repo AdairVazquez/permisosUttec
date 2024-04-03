@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>BIENVENID@ <b> {{$user->name}} </b> a</h1>
+    <h1>BIENVENID@ <b> {{$user->name}} </b></h1>
 @stop
 
 @section('content')
@@ -24,7 +24,7 @@
                 <img src="{{asset('img/puestos.jpg') }}" class="card-img-top" height="250px" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Puestos</h5>
-                  <p class="card-text">Gestión de los profesores.</p>
+                  <p class="card-text">Gestión de los puestos.</p>
                   <a href="{{route('puesto.nueva')}}" class="btn btn-primary">Nuevo puesto</a>
                   <a href="{{route('puestos')}}" class="btn btn-success">Listado puestos</a>
                 </div>
